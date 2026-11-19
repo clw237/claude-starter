@@ -5,4 +5,4 @@ Headings, in this order: Added, Changed, Fixed, Removed, Security, Development.
 
 ## [Unreleased]
 ### Added
-- Project created from the claude-starter template.
+- Project created from the [claude-starter](https://github.com/clw237/claude-starter) template.

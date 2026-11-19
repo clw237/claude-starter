@@ -9,6 +9,7 @@ Goal: the smallest project in the chosen stack where `bash scripts/check.sh` run
 check, linter, type checker (if the language has one) and tests, and passes with one real test.
 
 **Modes.** *Fast* (timed challenge): steps 1–4 and 7 only, with no CI changes and no extra tooling.
+If the owner hasn't said which mode, use full mode unless the `code-challenge` skill is running.
 *Full* (a project that will last): all steps.
 
 ## 1. Choose the stack
@@ -36,9 +37,14 @@ Ask before installing anything globally. Package installs prompt for permission 
 or runs the wrong thing, replace the detection with the exact commands for this project, in the
 order format → lint → types → tests. Keep it failing fast (`set -e`).
 
-## 4. Fill in `CLAUDE.md`
-Replace every `<placeholder>`: the project line, the stack, the run command and the one-test command.
-Keep it short. Anything longer than a line belongs in a skill or in `.claude/rules/`.
+## 4. Fill in `CLAUDE.md` and the README
+- Replace every `<placeholder>` in `CLAUDE.md`: the project line, the stack, the run command and the
+  one-test command. Keep it short. Anything longer than a line belongs in a skill or in `.claude/rules/`.
+- If `README.md` is still the template's guide (it starts with `# claude-starter`), run
+  `git mv README.md docs/TEMPLATE.md`. Then write a short project `README.md` with the project name,
+  a one-line description, prerequisites, and the commands to install, run and check
+  (`bash scripts/check.sh`), followed by "Built from the claude-starter template (see `docs/TEMPLATE.md`)."
+  In fast mode, write the README stub now; the `code-challenge` skill fills it in at the end.
 
 ## 5. Permissions (full mode)
 In `.claude/settings.json`, add the stack's read-only and test commands to `permissions.allow`

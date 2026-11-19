@@ -45,18 +45,28 @@ order format → lint → types → tests. Keep it failing fast (`set -e`).
   a one-line description, prerequisites, and the commands to install, run and check
   (`bash scripts/check.sh`), followed by "Built from the claude-starter template (see `docs/TEMPLATE.md`)."
   In fast mode, write the README stub now; the `code-challenge` skill fills it in at the end.
+- If `CHANGELOG.md` still holds the template's own release history, replace it with the template's
+  fresh header and a single `## [Unreleased]` → `### Added` → "Project created from the claude-starter
+  template." line.
 
 ## 5. Permissions (full mode)
 In `.claude/settings.json`, add the stack's read-only and test commands to `permissions.allow`
 (e.g. `"Bash(uv run pytest *)"`) so Claude doesn't prompt for every test run. Leave installs under `ask`.
 
-## 6. CI and decisions (full mode)
+## 6. CI, security and decisions (full mode)
 - `.github/workflows/ci.yml` runs `scripts/check.sh`. Add the setup step for the language (commented
   examples are in the file). Pin each action to a full commit SHA with the version in a comment.
-- Write `docs/decisions/0002-<language-and-stack>.md` explaining why this stack.
+  If you rename or add a CI job, update `required_status_checks` in `.github/rulesets/main.json`.
+- Add the language's package ecosystem to `.github/dependabot.yml` (weekly, minor and patch grouped).
+- Add a dependency-audit job for the language to `.github/workflows/security.yml` (`pip-audit`,
+  `npm audit --audit-level=high`, `cargo audit`, `govulncheck`, `dotnet list package --vulnerable`).
+- If the app sends prompts to an LLM, add the prompt folder to `EXTRA_DIRS` in `scripts/scan_agent_files.py`.
+- If `scripts/check_changelog.py`'s `EXEMPT` pattern doesn't fit the layout (e.g. generated files), adjust it.
+- Write `docs/decisions/0004-<language-and-stack>.md` explaining why this stack.
 - Add a language rule file, `.claude/rules/<language>.md`, scoped with `paths:` to that language's files.
   It should hold only the conventions Claude would otherwise get wrong. Keep it short.
 
 ## 7. Commit
-`bash scripts/check.sh` must be green. Commit as `Bootstrap <language> project`, and tell the owner the
-commands in two lines.
+`bash scripts/check.sh` must be green. Commit as `Bootstrap <language> project`, and tell the owner
+the commands in two lines. In full mode, also remind them of the one-time GitHub setup in
+`docs/PRACTICES.md` ("One-time setup"): import the ruleset, create the labels, turn on secret scanning.

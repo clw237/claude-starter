@@ -7,6 +7,8 @@ Headings, in this order: Added, Changed, Fixed, Removed, Security, Development.
      a fresh changelog when a new project is created from the template. -->
 
 ## [Unreleased]
+### Added
+- `docs/code-challenge-kickoff.md`: a ready-to-paste first message for timed code challenges.
 
 ## [1.0.0] - 2026-11-19
 ### Added

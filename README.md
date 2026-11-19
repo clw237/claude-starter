@@ -119,6 +119,10 @@ them test first. **Wrap up** starts on time, even mid-slice. You finish with a R
 run it, the approach, assumptions, trade-offs, next steps and how AI was used, plus a short talk
 track for presenting. The skill keeps the code plain enough that you can explain every line.
 
+For a fuller start, paste the kickoff prompt in
+[`docs/code-challenge-kickoff.md`](docs/code-challenge-kickoff.md). It covers the time limit,
+evaluation criteria and working rules, so you don't spend challenge minutes on setup.
+
 ## Customizing
 
 - **Your stack:** after `/bootstrap`, `scripts/check.sh` holds the exact commands. Edit it freely. CI runs whatever it says.

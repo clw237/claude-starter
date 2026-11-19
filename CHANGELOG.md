@@ -10,6 +10,9 @@ Headings, in this order: Added, Changed, Fixed, Removed, Security, Development.
 ### Added
 - `docs/code-challenge-kickoff.md`: a ready-to-paste first message for timed code challenges.
 
+### Changed
+- The README no longer features the code challenge workflow; it's listed once as an optional skill.
+
 ## [1.0.0] - 2026-11-19
 ### Added
 - `docs/PRACTICES.md`: every practice in the template, what it does and why.

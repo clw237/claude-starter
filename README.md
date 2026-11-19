@@ -82,7 +82,7 @@ flowchart LR
 | [`.claude/rules/`](.claude/rules) | Coding style, security, testing (testing is scoped to test files with `paths:`) | Automatically, by path |
 | [`.claude/skills/bootstrap`](.claude/skills/bootstrap/SKILL.md) | Choose a stack, scaffold it, wire up the check, fill in the placeholders | `/bootstrap` |
 | [`.claude/skills/add-feature`](.claude/skills/add-feature/SKILL.md) | Plan, branch, test first, check, review, pull request | `/add-feature` |
-| [`.claude/skills/code-challenge`](.claude/skills/code-challenge/SKILL.md) | Timeboxed workflow for interviews and take-homes, ending in a README that explains the work | `/code-challenge` |
+| [`.claude/skills/code-challenge`](.claude/skills/code-challenge/SKILL.md) | *Optional:* a timeboxed workflow for take-homes and interviews ([kickoff prompt](docs/code-challenge-kickoff.md)) | `/code-challenge` |
 | [`.claude/skills/handoff`](.claude/skills/handoff/SKILL.md) | When and how to start a fresh, cheaper session | `/handoff` |
 | [`.claude/skills/log-issue`](.claude/skills/log-issue/SKILL.md) | File bugs and ideas as well-formed issues, settle their open questions, and plan what's next | `/log-issue` |
 | [`.claude/agents/planner.md`](.claude/agents/planner.md) | Read-only implementation plan for larger changes | Delegated |
@@ -105,23 +105,6 @@ flowchart LR
 | [`.pre-commit-config.yaml`](.pre-commit-config.yaml) | Fast checks before each commit: whitespace, syntax, merge markers, large files, private keys | Optional |
 
 Personal overrides that stay out of git go in `CLAUDE.local.md` and `.claude/settings.local.json`. Both are gitignored.
-
-## Using it for a code challenge or interview
-
-```text
-/code-challenge
-Time limit: 60 minutes. Here is the prompt: <paste it>
-```
-
-The skill splits your time into phases. **Understand** produces clarifying questions and edge cases.
-**Set up** recommends a language and you decide. **Plan** lays out the slices. **Build** works through
-them test first. **Wrap up** starts on time, even mid-slice. You finish with a README covering how to
-run it, the approach, assumptions, trade-offs, next steps and how AI was used, plus a short talk
-track for presenting. The skill keeps the code plain enough that you can explain every line.
-
-For a fuller start, paste the kickoff prompt in
-[`docs/code-challenge-kickoff.md`](docs/code-challenge-kickoff.md). It covers the time limit,
-evaluation criteria and working rules, so you don't spend challenge minutes on setup.
 
 ## Customizing
 

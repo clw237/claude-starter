@@ -7,6 +7,8 @@ Headings, in this order: Added, Changed, Fixed, Removed, Security, Development.
      a fresh changelog when a new project is created from the template. -->
 
 ## [Unreleased]
+
+## [1.0.0] - 2026-11-19
 ### Added
 - `docs/PRACTICES.md`: every practice in the template, what it does and why.
 - Branch rules for `main` as code (`.github/rulesets/`), with an import guide.
@@ -29,3 +31,7 @@ Headings, in this order: Added, Changed, Fixed, Removed, Security, Development.
   `code-challenge` and `handoff` skills, `planner`, `code-reviewer` and `build-fixer` subagents, a
   format-on-edit hook, safety permissions, `scripts/check.sh` shared with CI, `PLAN.md`, decision
   records, a Claude Code cheat sheet, Dependabot, and issue and pull request templates.
+
+[Unreleased]: https://github.com/clw237/claude-starter/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/clw237/claude-starter/compare/v0.1.0...v1.0.0
+[0.1.0]: https://github.com/clw237/claude-starter/releases/tag/v0.1.0

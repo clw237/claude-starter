@@ -28,6 +28,7 @@ Review: first verdict <!-- ready / fix N findings first --> · fix rounds 0 · f
 - [ ] Every row in "How it was tested" is verified (or after deploy, with `Refs #n`)
 - [ ] Checked in the running app, not just in tests
 - [ ] The `code-reviewer` subagent (or `/code-review`) was run on the diff and its findings fixed
+- [ ] `/security-review` was run if the diff touches auth, user input, secrets, file paths, queries or dependencies
 - [ ] `CHANGELOG.md` has a line under `[Unreleased]` (or a commit says `Changelog: none`)
 - [ ] `PLAN.md` updated if the design changed; a record in `docs/decisions/` for a significant choice
 - [ ] CI is green on this pull request's current head, with the branch up to date with `main`

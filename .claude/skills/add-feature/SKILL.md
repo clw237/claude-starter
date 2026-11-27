@@ -40,6 +40,8 @@ and put the issue numbers in the pull request title.
   when" pasted into its prompt, and fix what it finds. A `Review: incomplete` result isn't a review:
   fix the reason and run it again. Note the first verdict, the number of fix rounds and the final
   verdict for the pull request.
+- When the diff touches auth, user input, secrets, file paths, queries or dependencies, also run
+  `/security-review` and fix or answer what it finds.
 - Re-read the diff yourself: no debug output, no commented-out code, no unrelated changes.
 
 ## 5. Finish

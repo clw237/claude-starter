@@ -39,3 +39,6 @@ build/
 .gradle/
 obj/
 out/
+
+# Check record (scripts/check_record.py)
+.check/

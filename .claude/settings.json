@@ -5,6 +5,7 @@
       "Bash(bash scripts/check.sh)",
       "Bash(bash scripts/check.sh *)",
       "Bash(python3 scripts/scan_agent_files.py)",
+      "Bash(python3 scripts/check_record.py verify)",
       "Bash(python3 -m unittest discover -s scripts/tests)",
       "Bash(git status)",
       "Bash(git status *)",
@@ -38,7 +39,8 @@
       "Edit(./.github/rulesets/**)",
       "Edit(./scripts/check_changelog.py)",
       "Edit(./scripts/scan_agent_files.py)",
-      "Edit(./scripts/check_pr_evidence.py)"
+      "Edit(./scripts/check_pr_evidence.py)",
+      "Edit(./scripts/check_record.py)"
     ],
     "deny": [
       "Bash(git push --force)",

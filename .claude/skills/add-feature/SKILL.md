@@ -49,6 +49,8 @@ and put the issue numbers in the pull request title.
   Development) for anything a user would notice, with the issue number. Use each heading once, in that
   order. When nothing visible changed, put `Changelog: none` on its own line in a commit message instead.
   The `changelog` CI job and the Stop hook check this. Never edit a released section.
+- Before pushing, run `python3 scripts/check_record.py verify`. It fails unless the last
+  `bash scripts/check.sh` passed on exactly these files; if it fails, run the check again.
 - Push with `git push -u origin <branch>` and open a pull request. Fill in every section of the template,
   with `Closes #N` (one line per issue), or `Refs #N` for partial work, saying what's left. Fill the
   "How it was tested" table with one row per criterion: its proof and `verified`, or `after deploy`

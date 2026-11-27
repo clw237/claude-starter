@@ -36,4 +36,10 @@ body:
     id: done
     attributes:
       label: Done when
-      description: How we'll know it's fixed. A test that reproduces the bug is usually part of this.
+      description: |
+        One line per criterion: what works → how it's proven (test / running app / database / person).
+        A test that reproduces the bug is usually one of them. Mark a criterion that can only be proven
+        after deploy with "(after deploy)".
+      placeholder: |
+        - An empty search no longer crashes → unit test that reproduces the bug
+        - The search page shows "No results" → checked in the running app

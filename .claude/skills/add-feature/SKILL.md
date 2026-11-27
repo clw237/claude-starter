@@ -8,7 +8,8 @@ description: Use when starting, building or finishing any code change (feature, 
 ## 1. Understand and plan
 - Read each issue in full, including comments. If an issue is unclear, too big, or conflicts with
   `PLAN.md`, say so and ask. Don't silently narrow it. Check it meets the Definition of Ready in
-  `CONTRIBUTING.md`.
+  `CONTRIBUTING.md`: every "Done when" criterion names its proof (`what works → how it's proven`). If
+  one doesn't, propose a proof and ask before building.
 - For several issues, follow "Planning the work" in `CONTRIBUTING.md`: group the ones that touch the same
   code into one pull request, apply the size check, and put the groups in build order.
 - For anything beyond a one-file change, write a short plan (use plan mode, or the `planner` subagent

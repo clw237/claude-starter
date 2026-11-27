@@ -36,7 +36,10 @@ and put the issue numbers in the pull request title.
 ## 4. Check it for real
 - Run the app (the run command in `CLAUDE.md`) and exercise the change the way a user would: the
   command, the page, the API call. Note what you checked for the pull request's "How it was tested".
-- Run the `code-reviewer` subagent (or `/code-review`) on the branch diff and fix what it finds.
+- Run the `code-reviewer` subagent (or `/code-review`) on the branch diff, with each issue's "Done
+  when" pasted into its prompt, and fix what it finds. A `Review: incomplete` result isn't a review:
+  fix the reason and run it again. Note the first verdict, the number of fix rounds and the final
+  verdict for the pull request.
 - Re-read the diff yourself: no debug output, no commented-out code, no unrelated changes.
 
 ## 5. Finish

@@ -15,6 +15,8 @@ Closes #
 
 Tests: 0 added, 0 failed, 0 skipped
 
+Review: first verdict <!-- ready / fix N findings first --> · fix rounds 0 · final verdict <!-- ready -->
+
 ## Look closely at
 <!-- Risky parts, design choices, trade-offs. Write "Nothing special" if there are none. -->
 

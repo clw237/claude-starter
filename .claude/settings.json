@@ -37,7 +37,8 @@
       "Edit(./.github/workflows/**)",
       "Edit(./.github/rulesets/**)",
       "Edit(./scripts/check_changelog.py)",
-      "Edit(./scripts/scan_agent_files.py)"
+      "Edit(./scripts/scan_agent_files.py)",
+      "Edit(./scripts/check_pr_evidence.py)"
     ],
     "deny": [
       "Bash(git push --force)",

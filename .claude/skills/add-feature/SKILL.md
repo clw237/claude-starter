@@ -45,7 +45,10 @@ and put the issue numbers in the pull request title.
   order. When nothing visible changed, put `Changelog: none` on its own line in a commit message instead.
   The `changelog` CI job and the Stop hook check this. Never edit a released section.
 - Push with `git push -u origin <branch>` and open a pull request. Fill in every section of the template,
-  with `Closes #N` (one line per issue), or `Refs #N` for partial work, saying what's left.
+  with `Closes #N` (one line per issue), or `Refs #N` for partial work, saying what's left. Fill the
+  "How it was tested" table with one row per criterion: its proof and `verified`, or `after deploy`
+  for a criterion that can only be proven after deploy (then the issue line is `Refs #N`, so the
+  issue stays open). The `pr-evidence` check fails on a missing table or an `outstanding` row.
 - Wait for CI to go green on the current head. If it fails, reproduce it with `bash scripts/check.sh`,
   fix it and push. After merging `main` into the branch, wait for CI again.
 - Never merge your own pull request unless the owner says to.

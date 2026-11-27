@@ -41,6 +41,11 @@ body:
     id: done
     attributes:
       label: Done when
-      description: What works when it's finished, and what the tests cover.
+      description: |
+        One line per criterion: what works → how it's proven (test / running app / database / person).
+        Mark a criterion that can only be proven after deploy with "(after deploy)".
+      placeholder: |
+        - Saving a draft keeps it after a reload → integration test against the test database
+        - The draft list shows the newest first → checked in the running app
     validations:
       required: true

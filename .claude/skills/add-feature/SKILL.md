@@ -8,7 +8,8 @@ description: Use when starting, building or finishing any code change (feature, 
 ## 1. Understand and plan
 - Read each issue in full, including comments. If an issue is unclear, too big, or conflicts with
   `PLAN.md`, say so and ask. Don't silently narrow it. Check it meets the Definition of Ready in
-  `CONTRIBUTING.md`.
+  `CONTRIBUTING.md`: every "Done when" criterion names its proof (`what works → how it's proven`). If
+  one doesn't, propose a proof and ask before building.
 - For several issues, follow "Planning the work" in `CONTRIBUTING.md`: group the ones that touch the same
   code into one pull request, apply the size check, and put the groups in build order.
 - For anything beyond a one-file change, write a short plan (use plan mode, or the `planner` subagent
@@ -35,7 +36,12 @@ and put the issue numbers in the pull request title.
 ## 4. Check it for real
 - Run the app (the run command in `CLAUDE.md`) and exercise the change the way a user would: the
   command, the page, the API call. Note what you checked for the pull request's "How it was tested".
-- Run the `code-reviewer` subagent (or `/code-review`) on the branch diff and fix what it finds.
+- Run the `code-reviewer` subagent (or `/code-review`) on the branch diff, with each issue's "Done
+  when" pasted into its prompt, and fix what it finds. A `Review: incomplete` result isn't a review:
+  fix the reason and run it again. Note the first verdict, the number of fix rounds and the final
+  verdict for the pull request.
+- When the diff touches auth, user input, secrets, file paths, queries or dependencies, also run
+  `/security-review` and fix or answer what it finds.
 - Re-read the diff yourself: no debug output, no commented-out code, no unrelated changes.
 
 ## 5. Finish
@@ -43,8 +49,13 @@ and put the issue numbers in the pull request title.
   Development) for anything a user would notice, with the issue number. Use each heading once, in that
   order. When nothing visible changed, put `Changelog: none` on its own line in a commit message instead.
   The `changelog` CI job and the Stop hook check this. Never edit a released section.
+- Before pushing, run `python3 scripts/check_record.py verify`. It fails unless the last
+  `bash scripts/check.sh` passed on exactly these files; if it fails, run the check again.
 - Push with `git push -u origin <branch>` and open a pull request. Fill in every section of the template,
-  with `Closes #N` (one line per issue), or `Refs #N` for partial work, saying what's left.
+  with `Closes #N` (one line per issue), or `Refs #N` for partial work, saying what's left. Fill the
+  "How it was tested" table with one row per criterion: its proof and `verified`, or `after deploy`
+  for a criterion that can only be proven after deploy (then the issue line is `Refs #N`, so the
+  issue stays open). The `pr-evidence` check fails on a missing table or an `outstanding` row.
 - Wait for CI to go green on the current head. If it fails, reproduce it with `bash scripts/check.sh`,
   fix it and push. After merging `main` into the branch, wait for CI again.
 - Never merge your own pull request unless the owner says to.

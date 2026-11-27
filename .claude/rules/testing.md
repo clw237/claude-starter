@@ -14,3 +14,6 @@ paths:
   Use fakes and fixtures.
 - When a test fails, fix the code unless the test is wrong. Never delete or skip a test to get green.
 - A bug fix starts with a test that reproduces the bug.
+- A criterion that crosses a boundary (frontend → API → database) needs at least one test or check on
+  the real path, such as an integration test against a local or test-container database, not only mocks.
+  Mocks still cover the edge cases; the real-path test proves the parts fit together.

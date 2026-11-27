@@ -8,6 +8,8 @@ here so the settings are reviewed and versioned like code. Import it once by han
 - **CI must pass:** the `check` and `changelog` jobs from `.github/workflows/ci.yml` must succeed, on a
   branch that is up to date with `main` ("Require branches to be up to date"). Without this, a branch
   can merge after `main` was merged into it but before CI ran on the result, and `main` goes red.
+- **Evidence recorded:** the `pr-evidence` job from `.github/workflows/pr-evidence.yml` must succeed:
+  every acceptance criterion in the pull request's "How it was tested" table is verified.
 - **Squash merges only:** each pull request lands on `main` as one commit, however many commits the
   branch has. The branch's own commits stay readable on the pull request.
 - **Review threads resolved** before merging.

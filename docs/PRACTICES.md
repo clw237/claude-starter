@@ -31,6 +31,10 @@ Several ideas are adapted from [affaan-m/ECC](https://github.com/affaan-m/ECC) (
 | **Format on edit** | A hook formats each file right after Claude edits it | Formatting noise never reaches review or CI | `.claude/hooks/format.sh` |
 | **Check in the running app** | Exercise the change the way a user would before the pull request | Passing tests don't prove the feature works end to end | `add-feature` §4, pull request checklist |
 | **Evidence-gated review** | The reviewer reports only findings with a cited line and a concrete failure | Noisy reviews get ignored, and inflated severity erodes trust | `.claude/agents/code-reviewer.md` |
+| **Proof per criterion** | Each "Done when" line names how it's proven: a test, the running app, the database or a person. A criterion that crosses a boundary gets one test on the real path | "Done" means the same thing to whoever builds, reviews and merges it, and mocks can't hide a broken seam | Issue forms, `CONTRIBUTING.md`, `.claude/rules/testing.md`, decision 0004 |
+| **Evidence gates the merge** | The pull request records each criterion's proof and result; `pr-evidence` fails on a missing table or an outstanding row | An unproven criterion can't merge quietly | Pull request template, `scripts/check_pr_evidence.py`, the ruleset |
+| **Check record** | `check.sh` saves each step's result with a fingerprint of the files; `check_record.py verify` runs before the push | A pass on files that changed afterwards doesn't count | `scripts/check_record.py`, `add-feature` §5 |
+| **Criteria-aware review** | The reviewer reports unmet criteria and says whether its review completed; `/security-review` runs on security-sensitive diffs | A review that skipped the point of the change, or couldn't finish, isn't mistaken for a pass | `code-reviewer`, `add-feature` §4 |
 | **Green on the merged head** | After merging `main` into a branch, wait for CI on the new head | A branch merged before CI ran on the result once turned `main` red | `CONTRIBUTING.md`, the ruleset |
 
 ## 3. Guardrails

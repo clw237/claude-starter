@@ -9,6 +9,7 @@ Headings, in this order: Added, Changed, Fixed, Removed, Security, Development.
 ## [Unreleased]
 ### Added
 - `docs/code-challenge-kickoff.md`: a ready-to-paste first message for timed code challenges.
+- Evidence for "done" (decision 0004): each "Done when" criterion names its proof, the pull request records a `Criterion | Proof | Result` table that the required `pr-evidence` check enforces, `code-reviewer` checks the criteria, and `scripts/check.sh` saves a check record that `scripts/check_record.py verify` confirms before a push.
 
 ### Changed
 - The README no longer features the code challenge workflow; it's listed once as an optional skill.

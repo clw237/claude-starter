@@ -54,7 +54,9 @@ When the owner asks for "what's next" or a set of issues, Claude plans before wr
 
 ## Definition of Ready
 An issue can be built when:
-- It says what's wanted and why, and has a **Done when** that can be checked.
+- It says what's wanted and why, and has a **Done when** with one line per criterion that names its
+  proof: `what works → how it's proven` (a test, the running app, the database, or a person). A
+  criterion that can only be proven after deploy says `(after deploy)`.
 - It has no open questions left (they're in its **Decided** section), and it's labeled `ready`.
 - Every issue in its "Depends on" line is closed.
 - It fits in one pull request (or its group's), or it says how it splits.
@@ -62,7 +64,9 @@ An issue can be built when:
 
 ## Definition of Done
 A change is done when:
-- Its issue's **Done when** is met, and it has been checked in the running app, not just in tests.
+- Every criterion in its issue's **Done when** is verified by the proof it names, and recorded in the
+  pull request's evidence table. It has been checked in the running app, not just in tests. A
+  criterion marked `(after deploy)` keeps the issue open: the pull request says `Refs #N`, not `Closes`.
 - Tests cover it. Coverage floors only go up and lint or type-check ignore lists only shrink: never
   lower or extend them to get green.
 - `bash scripts/check.sh` passes locally, and every CI check is green on the pull request's **current

@@ -16,7 +16,9 @@ list of work. Read `PLAN.md` and the Definition of Ready in `CONTRIBUTING.md` fi
 3. **File the issue** with these sections (the forms in `.github/ISSUE_TEMPLATE/` match):
    Summary · Depends on: #N or "none" · What exists today · ⚠️ Open questions (checkboxes, each
    with a *Proposed:* answer), or ✅ Decided when there's nothing to settle · Rough design (only
-   when useful) · Done when.
+   when useful) · Done when, one line per criterion in the form `what works → how it's proven`
+   (test / running app / database / person), with `(after deploy)` on any criterion that can only be
+   proven after deploy. A criterion without a proof isn't ready.
 4. **Labels:** one type (`bug` or `enhancement`) and exactly one status: `needs-decision`, `blocked`,
    `ready` or `backlog` (`CONTRIBUTING.md`). If the labels don't exist yet, create them first.
 5. **Report back briefly:** the link, the labels and the open questions in plain language.

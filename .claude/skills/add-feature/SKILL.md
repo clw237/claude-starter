@@ -27,7 +27,9 @@ and put the issue numbers in the pull request title.
    test that reproduces the bug.
 2. Write the simplest code that passes it.
 3. Refactor while green.
-4. Run `bash scripts/check.sh`, then commit. Repeat for each slice.
+4. Run `bash scripts/check.sh`. Repeat for each slice.
+5. Commit once per reviewable unit (usually one per issue, or one per step of an approved plan), not
+   after every red-green cycle. Each commit is green and includes its tests, docs and changelog line.
 - Fix the code, not the test, unless the test is wrong. Never skip, disable or loosen a check. Coverage
   floors only go up, and ignore lists only shrink.
 - Don't let tests touch the network. Use fakes and fixtures.
@@ -42,7 +44,12 @@ and put the issue numbers in the pull request title.
 - Add a line under `## [Unreleased]` in `CHANGELOG.md` (Added / Changed / Fixed / Removed / Security /
   Development) for anything a user would notice, with the issue number. Use each heading once, in that
   order. When nothing visible changed, put `Changelog: none` on its own line in a commit message instead.
-  The `changelog` CI job and the Stop hook check this. Never edit a released section.
+  The `changelog` CI job and the Stop hook check this. Never edit a released section. Put the line in
+  the same commit as the code it describes, not in a commit of its own.
+- Before the first push, fold review and check fixes into the commit they belong to
+  (`git commit --fixup=<sha>`, then `GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash origin/main`).
+  After the push, history is shared: add new commits and never force-push. Squash merging makes
+  `main` one commit per pull request either way.
 - Push with `git push -u origin <branch>` and open a pull request. Fill in every section of the template,
   with `Closes #N` (one line per issue), or `Refs #N` for partial work, saying what's left.
 - Wait for CI to go green on the current head. If it fails, reproduce it with `bash scripts/check.sh`,

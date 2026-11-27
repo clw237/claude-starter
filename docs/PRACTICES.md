@@ -25,7 +25,8 @@ Several ideas are adapted from [affaan-m/ECC](https://github.com/affaan-m/ECC) (
 | Practice | What it does | Why | Where |
 |---|---|---|---|
 | **One definition of done** | `scripts/check.sh` runs format, lint, types and tests | Claude, you and CI agree on what "done" means. Nobody guesses commands | `scripts/check.sh`, `ci.yml` |
-| **Test first, small slices** | Write a failing test, make it pass, run the check, commit | Every commit is green and reviewable, so a bad step is easy to undo | `add-feature`, `.claude/rules/testing.md` |
+| **Test first, small slices** | Write a failing test, make it pass, run the check. Commit once per reviewable unit | Every slice is checked, while history stays short: a commit per red-green cycle buried the real changes | `add-feature`, `.claude/rules/testing.md` |
+| **Few commits, squash merges** | The changelog line and review fixes go in the commit they belong to (folded before the first push). Pull requests squash-merge | `main` reads as one commit per change, and branch history shows units of work, not keystrokes | `add-feature` §5, `CONTRIBUTING.md`, the ruleset, decision 0005 |
 | **Never loosen a check** | No skipped tests or weakened rules. Coverage floors only go up and ignore lists only shrink | Under pressure, an agent will "fix" a red build by weakening the check | `CLAUDE.md`, `build-fixer` |
 | **Format on edit** | A hook formats each file right after Claude edits it | Formatting noise never reaches review or CI | `.claude/hooks/format.sh` |
 | **Check in the running app** | Exercise the change the way a user would before the pull request | Passing tests don't prove the feature works end to end | `add-feature` §4, pull request checklist |

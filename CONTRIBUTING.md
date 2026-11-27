@@ -16,11 +16,11 @@ explains why each practice exists.
    skill files issues for the owner). Its open questions are decided, and it becomes `ready`.
 2. **The work is planned** ("Planning the work" below) and the owner approves the plan.
 3. **A branch and a pull request** build it (`add-feature` skill): `feature/<name>`, `fix/<name>` or
-   `chore/<name>`, never `main`. For each slice, write a test, make it pass, run
-   `bash scripts/check.sh`, then commit.
+   `chore/<name>`, never `main`. For each slice, write a test, make it pass and run
+   `bash scripts/check.sh`. Commit once per reviewable unit (an issue, or a step of the plan).
 4. **Review:** the `code-reviewer` subagent (or `/code-review`) on the diff, then a check in the
    running app.
-5. **CI passes** (`check`, `changelog`; the Security workflow reports too) and the owner merges.
+5. **CI passes** (`check`, `changelog`; the Security workflow reports too) and the owner squash-merges.
    Nobody merges their own pull request unless the owner says so.
 
 ## Issue labels
@@ -89,9 +89,15 @@ before calling it ready. When one pull request merges, re-check the other open o
   README. Issues, releases and the changelog hold status. Prose status always goes stale.
 - **Batch doc edits:** one commit for a set of related changes, not one per line.
 
-## Commit messages
-A short imperative title (`Add CSV parser`, `Fix off-by-one in pager`), then what changed and why.
-Optional trailer lines: `Changelog: none` when nothing visible changed.
+## Commits
+- **Few, whole commits.** One per reviewable unit, each green, with its tests, docs and changelog
+  line. Not one per red-green cycle, and no separate "add changelog" or "fix review" commits before
+  the first push: fold those in with `git commit --fixup` and an autosquash rebase. After pushing,
+  add new commits instead (no force-push).
+- **Squash merge.** Pull requests land on `main` as one commit (the ruleset allows nothing else), so
+  `main` reads as one line per change.
+- **Messages:** a short imperative title (`Add CSV parser`, `Fix off-by-one in pager`), then what
+  changed and why. Optional trailer lines: `Changelog: none` when nothing visible changed.
 
 ## Working with Claude Code
 - Keep `CLAUDE.md` short. Detail belongs in skills (loaded on demand) and `.claude/rules/` (scoped by path).

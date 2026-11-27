@@ -10,6 +10,8 @@ here so the settings are reviewed and versioned like code. Import it once by han
   can merge after `main` was merged into it but before CI ran on the result, and `main` goes red.
 - **Evidence recorded:** the `pr-evidence` job from `.github/workflows/pr-evidence.yml` must succeed:
   every acceptance criterion in the pull request's "How it was tested" table is verified.
+- **Squash merges only:** each pull request lands on `main` as one commit, however many commits the
+  branch has. The branch's own commits stay readable on the pull request.
 - **Review threads resolved** before merging.
 - **No required approvals.** GitHub doesn't let you approve your own pull request, and agent sessions
   push as your account, so a required approval would block every merge. Your review is the merge itself.

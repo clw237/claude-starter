@@ -62,7 +62,7 @@ In `.claude/settings.json`, add the stack's read-only and test commands to `perm
   `npm audit --audit-level=high`, `cargo audit`, `govulncheck`, `dotnet list package --vulnerable`).
 - If the app sends prompts to an LLM, add the prompt folder to `EXTRA_DIRS` in `scripts/scan_agent_files.py`.
 - If `scripts/check_changelog.py`'s `EXEMPT` pattern doesn't fit the layout (e.g. generated files), adjust it.
-- Write `docs/decisions/0004-<language-and-stack>.md` explaining why this stack.
+- Write `docs/decisions/<next free number>-<language-and-stack>.md` explaining why this stack.
 - Add a language rule file, `.claude/rules/<language>.md`, scoped with `paths:` to that language's files.
   It should hold only the conventions Claude would otherwise get wrong. Keep it short.
 

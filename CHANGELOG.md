@@ -13,6 +13,7 @@ Headings, in this order: Added, Changed, Fixed, Removed, Security, Development.
 
 ### Changed
 - The README no longer features the code challenge workflow; it's listed once as an optional skill.
+- Fewer commits (decision 0005): `add-feature` commits once per reviewable unit with its changelog line, folds fixes in before the first push, and the `main` ruleset allows squash merges only.
 
 ## [1.0.0] - 2026-11-19
 ### Added

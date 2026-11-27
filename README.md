@@ -9,7 +9,7 @@ AI coding sessions tend to drift. They guess commands, skip tests, bloat their c
 mistakes you already corrected. This template gives every new project the same set of guardrails:
 
 - **Plan first.** Claude writes a short plan, and you approve it before any code changes.
-- **Test as you go.** Work happens in small, tested slices, each one committed green.
+- **Test as you go.** Work happens in small, tested slices, committed green once per reviewable unit.
 - **One definition of done.** `scripts/check.sh` runs format, lint, types and tests. It's the same for Claude, for you and for CI.
 - **Lean context.** Only essentials load every turn. Skills and rules load when they're needed.
 - **Guardrails, not just guidelines.** Permissions and hooks enforce the rules that matter.
@@ -55,7 +55,7 @@ what each one does, why it's there, and where it's enforced.
 | Area | Practices |
 |---|---|
 | **How Claude works** | Lean `CLAUDE.md`. Skills and path-scoped rules that load only when needed. Three narrow subagents. Plan before code. Corrections update the rule in place. Fresh sessions over long ones |
-| **Quality** | One check script for everyone. Test-first slices with green commits. Never loosen a check (coverage floors only go up). Format on edit. Check in the running app. Evidence-gated review. CI green on the merged head |
+| **Quality** | One check script for everyone. Test-first slices, few green commits, squash merges. Never loosen a check (coverage floors only go up). Format on edit. Check in the running app. Evidence-gated review. CI green on the merged head |
 | **Guardrails** | Committed permission rules. `main` ruleset kept as code. gitleaks secret scan. A scan of `CLAUDE.md` and `.claude/` for hidden or risky content. Fail-safe hooks. SHA-pinned actions with Dependabot. Pre-commit hooks |
 | **Planning and issues** | Issues are the only work list. Status labels. Open questions with proposed answers. Definition of Ready and Done. Related issues grouped per pull request, with a size check |
 | **Documents and releases** | One design doc. Decision records. No status in prose. Enforced, well-formed changelog. Frozen released sections. Releases only on request |
@@ -69,9 +69,10 @@ flowchart LR
     C --> D[Code until green]
     D --> E{scripts/check.sh}
     E -- red --> F[build-fixer] --> E
-    E -- green --> G[Commit]
-    G -- next slice --> C
-    G -- done --> H[code-reviewer] --> I[Pull request<br/>CI runs the same check]
+    E -- green, next slice --> C
+    E -- green, unit done --> G[Commit]
+    G -- next unit --> C
+    G -- done --> H[code-reviewer] --> I[Pull request<br/>CI runs the same check] --> J[Squash merge]
 ```
 
 ## What's inside

@@ -11,10 +11,11 @@ at committed work, so it always asks after the code commit); and the ruleset all
 which copy every branch commit onto `main`.
 
 ## Options
-1. Keep per-slice commits: fine-grained undo / history is noise, and review is harder.
-2. Commit per reviewable unit, fold fixes before the first push, squash-merge: `main` has one commit
-   per change and branches show units of work / the branch's fine-grained steps aren't on `main`.
-3. Squash merge only: fixes `main` alone / branch history on the pull request stays noisy.
+1. Keep per-slice commits. Pro: fine-grained undo. Con: the history is noise and harder to review.
+2. Commit per reviewable unit, fold fixes before the first push, and squash-merge. Pro: `main` has
+   one commit per change and branches show units of work. Con: a branch's finer steps aren't on `main`.
+3. Squash merges only. Pro: fixes `main` with no change to how sessions commit. Con: the branch
+   history on the pull request stays noisy.
 
 ## Decision
 Option 2:

@@ -47,7 +47,8 @@ and put the issue numbers in the pull request title.
   The `changelog` CI job and the Stop hook check this. Never edit a released section. Put the line in
   the same commit as the code it describes, not in a commit of its own.
 - Before the first push, fold review and check fixes into the commit they belong to
-  (`git commit --fixup=<sha>`, then `GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash origin/main`).
+  (`git commit --fixup=<sha>`, then `git fetch origin main` and
+  `GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash origin/main`; the rebase asks for approval).
   After the push, history is shared: add new commits and never force-push. Squash merging makes
   `main` one commit per pull request either way.
 - Push with `git push -u origin <branch>` and open a pull request. Fill in every section of the template,
